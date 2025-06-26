@@ -56,12 +56,75 @@ Three datasets have been utilised in this study. Warsaw Biobase v3 and NIJ datas
 | Cross-dataset     | Training and testing on different datasets (most realistic)  |
 
 ## 📊 Results Summary
+<!-- Comparative results: InceptionV3 vs DINO (NIJ NIR) -->
+<table>
+  <thead>
+    <tr>
+      <th rowspan="2">PMI&nbsp;Range</th>
+      <th colspan="2">Inception&nbsp;V3</th>
+      <th colspan="2">DINO</th>
+    </tr>
+    <tr>
+      <th>MAE</th>
+      <th>RMSE</th>
+      <th>MAE</th>
+      <th>RMSE</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>&lt; 100 h&nbsp;(4 d)</td>
+      <td>31.36</td>
+      <td>46.15</td>
+      <td>36.21</td>
+      <td>54.07</td>
+    </tr>
+    <tr>
+      <td>&lt; 200 h&nbsp;(8 d)</td>
+      <td>34.03</td>
+      <td>50.64</td>
+      <td>38.08</td>
+      <td>56.04</td>
+    </tr>
+    <tr>
+      <td>&lt; 300 h&nbsp;(12.5 d)</td>
+      <td>36.06</td>
+      <td>54.34</td>
+      <td>40.47</td>
+      <td>60.95</td>
+    </tr>
+    <tr>
+      <td>&lt; 400 h&nbsp;(16 d)</td>
+      <td>39.74</td>
+      <td>70.45</td>
+      <td>42.95</td>
+      <td>67.46</td>
+    </tr>
+    <tr>
+      <td>&lt; 1000 h&nbsp;(41 d)</td>
+      <td>45.15</td>
+      <td>86.34</td>
+      <td>46.13</td>
+      <td>76.11</td>
+    </tr>
+    <tr>
+      <td><strong>All&nbsp;PMIs</strong></td>
+      <td><strong>60.48</strong></td>
+      <td><strong>160.44</strong></td>
+      <td><strong>44.74</strong></td>
+      <td><strong>73.01</strong></td>
+    </tr>
+  </tbody>
+</table>
 
-| Model        | Spectrum     | Split Type     | RMSE (h) | MAE   | Notes                                |
-|--------------|--------------|----------------|----------|-------|--------------------------------------|
-| InceptionV3  | RGB          | Subject-wise   | ~22.7    | 18.5  | Outperformed DenseNet in most cases |
-| DINOv2 + MLP | NIR          | Cross-dataset  | Lower RMSE at high PMIs |  | More robust to image degradation     |
-| CLIP         | RGB          | Sample-wise    | Higher MAE |       | Less stable than DINO                |
+<div>
+  <img src="Images/inception_curve.png" alt="InceptionV3 PMI Performance" width="45%" style="margin-right: 10px;" />
+
+  <img src="Images/dino_curve.png" alt="DINO PMI Performance" width="45%" />
+
+</div>
+
+
 
 > 📌 **DINO** showed better generalization on high PMI ranges. **InceptionV3** had better performance in early PMI ranges. Multispectral models worked best in subject-disjoint settings.
 
@@ -71,15 +134,9 @@ Three datasets have been utilised in this study. Warsaw Biobase v3 and NIJ datas
 - 📊 Dataset imbalance: majority samples in early PMI classes  
 - 🌫️ Environmental degradation blurs and occludes iris structures
 
-## 🚀 Future Work
-
-- 🧬 Combine CNN and transformer features for robust PMI estimation across all ranges  
-- 🎨 Generate synthetic **RGB iris images** to balance high PMI ranges  
-- ⚡ Apply **weighted fusion** strategies for multispectral inputs
-
 ## 🔧 Getting Started
 
 ```bash
-git clone https://github.com/AkshatP0285/PMI-Estimation-From-Iris
-cd PMI-Estimation-From-Iris
+git clone https://github.com/AkshatP0285/PMI-Estimation-Using-Forensic-Iris-Images
+cd PMI-Estimation-Using-Forensic-Iris-Images
 pip install -r requirements.txt
